@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShiftPlanner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+    <h1>ShiftPlanner</h1>
+    <p>Employee Shift Roster &amp; Swap Requests</p>
+</header>
+
+<nav class="nav-bar">
+    <button class="nav-button active" data-page="employees">Employees</button>
+    <button class="nav-button" data-page="shifts">Shifts</button>
+    <button class="nav-button" data-page="roster">Roster</button>
+    <button class="nav-button" data-page="swap-requests">Swap Requests</button>
+</nav>
+
+<main class="container">
+    <p id="message" class="message"></p>
+
+    <section id="employees" class="page">
+        <div class="page-heading">
+            <h2>Employees</h2>
+            <button class="primary-button" id="add-employee-button">Add Employee</button>
+        </div>
+        <form id="employee-form" class="simple-form hidden">
+            <input type="hidden" id="employee-id">
+            <label>Name <input id="employee-name" required></label>
+            <label>Email <input id="employee-email" type="email" required></label>
+            <label>Role <input id="employee-role" placeholder="EMPLOYEE" required></label>
+            <div class="form-buttons">
+                <button class="primary-button" type="submit">Save</button>
+                <button class="secondary-button cancel-button" type="button">Cancel</button>
+            </div>
+        </form>
+        <div class="table-wrapper">
+            <table>
+                <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Actions</th></tr></thead>
+                <tbody id="employees-table"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="shifts" class="page hidden">
+        <div class="page-heading">
+            <h2>Shifts</h2>
+            <button class="primary-button" id="add-shift-button">Add Shift</button>
+        </div>
+        <form id="shift-form" class="simple-form hidden">
+            <input type="hidden" id="shift-id">
+            <label>Shift Date <input id="shift-date" type="date" required></label>
+            <label>Start Time <input id="shift-start" type="time" required></label>
+            <label>End Time <input id="shift-end" type="time" required></label>
+            <label>Shift Type <input id="shift-type" placeholder="DAY" required></label>
+            <div class="form-buttons">
+                <button class="primary-button" type="submit">Save</button>
+                <button class="secondary-button cancel-button" type="button">Cancel</button>
+            </div>
+        </form>
+        <div class="table-wrapper">
+            <table>
+                <thead><tr><th>ID</th><th>Date</th><th>Start Time</th><th>End Time</th><th>Shift Type</th><th>Actions</th></tr></thead>
+                <tbody id="shifts-table"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="roster" class="page hidden">
+        <div class="page-heading">
+            <h2>Roster</h2>
+            <button class="primary-button" id="add-roster-button">Add Roster</button>
+        </div>
+        <form id="roster-form" class="simple-form hidden">
+            <label>Employee <select id="roster-employee" required></select></label>
+            <label>Shift <select id="roster-shift" required></select></label>
+            <label>Week Start Date <input id="roster-week" type="date" required></label>
+            <div class="form-buttons">
+                <button class="primary-button" type="submit">Save</button>
+                <button class="secondary-button cancel-button" type="button">Cancel</button>
+            </div>
+        </form>
+        <div class="table-wrapper">
+            <table>
+                <thead><tr><th>Employee</th><th>Date</th><th>Start Time</th><th>End Time</th><th>Shift Type</th></tr></thead>
+                <tbody id="roster-table"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="swap-requests" class="page hidden">
+        <div class="page-heading">
+            <h2>Swap Requests</h2>
+            <button class="primary-button" id="add-swap-button">Add Swap Request</button>
+        </div>
+        <form id="swap-form" class="simple-form hidden">
+            <label>Requester <select id="swap-requester" required></select></label>
+            <label>Colleague <select id="swap-colleague" required></select></label>
+            <label>Shift <select id="swap-shift" required></select></label>
+            <div class="form-buttons">
+                <button class="primary-button" type="submit">Save</button>
+                <button class="secondary-button cancel-button" type="button">Cancel</button>
+            </div>
+        </form>
+        <div class="table-wrapper">
+            <table>
+                <thead><tr><th>ID</th><th>Requester</th><th>Colleague</th><th>Shift</th><th>Colleague Status</th><th>Manager Status</th></tr></thead>
+                <tbody id="swap-table"></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
